@@ -15,10 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Set up JDK 16
+      - name: Set up JDK 21
         uses: actions/setup-java@v3
         with:
-          java-version: '16'
+          java-version: '21'
           distribution: 'temurin'
       - name: Build with Gradle
         uses: gradle/gradle-build-action@v2
@@ -31,30 +31,6 @@ jobs:
       - name: Get Version
         run: |
           echo "version_name=${{steps.fetch-version.outputs.VERSION_NAME}}" >> $GITHUB_ENV
-      - name: Upload to Modrinth
-        uses: Kir-Antipov/mc-publish@v3.2
-        with:
-          modrinth-id: bME80dEI
-          modrinth-featured: false
-          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
-          modrinth-dependencies: |
-            huskhomes | depends | 3.0
-          files-primary: target/HuskHomesGUI-*.jar
-          name: HuskHomesGUI v${{ env.version_name }}
-          version: ${{ env.version_name }}
-          version-type: alpha
-          changelog: ${{ github.event.head_commit.message }}
-          loaders: |
-            spigot
-            paper
-            purpur
-          game-versions: |
-            1.16.5
-            1.17.1
-            1.18.2
-            1.19.4
-            1.20.1
-          java: 16
       - name: Upload GitHub Artifact
         uses: actions/upload-artifact@v2
         with:
