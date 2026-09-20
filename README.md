@@ -1,4 +1,4 @@
-> 🚨 **HuskHomesGUI has been discontinued** 🚨 and is no longer actively maintained. It may cease to function with newer versions of Minecraft/HuskHomes. We no longer provide support for it. Thank you for your understanding.
+Fork of HuskhomesGUI for Minecraft 1.21.11 by Spirious
 
 <!--suppress ALL -->
 <p align="center">
